@@ -16,11 +16,11 @@ fi
 sudo depmod
 
 # Set PWM pins to be used as analog audio output
-echo "dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4" | sudo tee -a /boot/config.txt
+echo "dtoverlay=dtoverlay=pwm-1chan,pin=13,func=2" | sudo tee -a /boot/config.txt
 
 # Force Pi to not output audio via HDMI
-sudo amixer cset numid=3 2
+sudo amixer cset numid=3 1
 
 # Enable general SPI interface as well was enabling SPI1
-printf "dtparam=spi=on\ndtoverlay=spi1-3cs" | sudo tee -a /boot/config.txt
+printf "dtparam=spi=on\ndtoverlay=spi1-1cs" | sudo tee -a /boot/config.txt
 
